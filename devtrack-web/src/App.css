@@ -1,0 +1,784 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #172033;
+  background: #f5f7fb;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f5f7fb;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.2);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   APP
+======================================== */
+
+.app {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0 80px;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.app-header {
+  margin-bottom: 32px;
+}
+
+.app-eyebrow,
+.section-eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #6366f1;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.app-header p {
+  margin: 12px 0 0;
+  max-width: 620px;
+  color: #697386;
+  font-size: 1rem;
+}
+
+/* ========================================
+   OVERVIEW
+======================================== */
+
+.overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.overview-card {
+  padding: 22px;
+  border: 1px solid #e6e9f0;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(20, 30, 55, 0.04);
+}
+
+.overview-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: #7a8498;
+  font-size: 0.82rem;
+}
+
+.overview-card strong {
+  font-size: 1.8rem;
+  letter-spacing: -0.03em;
+}
+
+/* ========================================
+   CONTROLS
+======================================== */
+
+.workspace-controls {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.5fr) auto auto;
+  align-items: end;
+  gap: 20px;
+  padding: 20px;
+  margin-bottom: 32px;
+  border: 1px solid #e6e9f0;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(20, 30, 55, 0.04);
+}
+
+.search-box,
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search-box label,
+.filter-group > span,
+.add-project-form > label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #667085;
+}
+
+.search-box input,
+.add-project-input input,
+.project-card input,
+.task-edit input {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 13px;
+  border: 1px solid #dfe3eb;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #172033;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.search-box input::placeholder,
+.add-project-input input::placeholder,
+.project-card input::placeholder,
+.task-edit input::placeholder {
+  color: #a1a8b5;
+}
+
+.search-box input:focus,
+.add-project-input input:focus,
+.project-card input:focus,
+.task-edit input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  outline: none;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 10px;
+  background: #f3f4f7;
+}
+
+.filter-buttons button {
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 7px;
+  background: transparent;
+  color: #667085;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.filter-buttons button:hover {
+  color: #172033;
+}
+
+.filter-buttons .filter-active {
+  background: #ffffff;
+  color: #4f46e5;
+  box-shadow: 0 1px 4px rgba(20, 30, 55, 0.08);
+}
+
+/* ========================================
+   PROJECT SECTION
+======================================== */
+
+.projects-section {
+  margin-bottom: 32px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.section-header h2,
+.add-project-card h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  letter-spacing: -0.025em;
+}
+
+.secondary-button {
+  border: 1px solid #dfe3eb;
+  padding: 9px 14px;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #4b5565;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.secondary-button:hover {
+  border-color: #c8cdd8;
+  background: #f9fafb;
+}
+
+.project-list {
+  display: grid;
+  gap: 18px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* ========================================
+   PROJECT CARD
+======================================== */
+
+.project-card {
+  padding: 24px;
+  border: 1px solid #e4e7ee;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 6px 24px rgba(20, 30, 55, 0.05);
+}
+
+.project-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.project-card__name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-card__name-row h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #7b8494;
+}
+
+.icon-button:hover {
+  background: #f3f4f7;
+  color: #4f46e5;
+}
+
+.status-badge {
+  display: inline-flex;
+  margin-top: 8px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.status-badge--active {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.status-badge--completed {
+  background: #ecfdf3;
+  color: #15803d;
+}
+
+.delete-button {
+  border: 0;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: #fff1f2;
+  color: #dc2626;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.delete-button:hover {
+  background: #ffe4e6;
+}
+
+/* ========================================
+   PROJECT EDIT
+======================================== */
+
+.project-card__edit {
+  min-width: min(100%, 420px);
+}
+
+.project-card__edit-actions,
+.task-edit__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.project-card__edit-actions button,
+.task-edit__actions button {
+  border: 0;
+  padding: 7px 11px;
+  border-radius: 8px;
+  background: #f3f4f7;
+  color: #4b5565;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.project-card__edit-actions button:first-child,
+.task-edit__actions button:first-child {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+.project-card__edit-actions button:first-child:hover,
+.task-edit__actions button:first-child:hover {
+  background: #4338ca;
+}
+
+/* ========================================
+   PROGRESS
+======================================== */
+
+.project-progress {
+  margin-top: 22px;
+}
+
+.project-progress__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  color: #7a8498;
+  font-size: 0.78rem;
+}
+
+.project-progress__info strong {
+  color: #4f46e5;
+}
+
+.project-progress__bar {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eef0f4;
+}
+
+.project-progress__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #6366f1;
+  transition: width 0.3s ease;
+}
+
+/* ========================================
+   COMPLETE PROJECT
+======================================== */
+
+.complete-project-button {
+  margin-top: 16px;
+  border: 0;
+  padding: 9px 13px;
+  border-radius: 9px;
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.complete-project-button:hover {
+  background: #e0e7ff;
+}
+
+/* ========================================
+   TASKS
+======================================== */
+
+.tasks-section {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid #edf0f4;
+}
+
+.tasks-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.tasks-section__header h4 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.tasks-section__header span {
+  color: #8991a1;
+  font-size: 0.75rem;
+}
+
+.task-list {
+  display: grid;
+  gap: 7px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 7px 9px;
+  border: 1px solid #edf0f4;
+  border-radius: 10px;
+  background: #fafbfc;
+}
+
+.task-item--completed {
+  background: #f7faf8;
+}
+
+.task-item--completed .task-title {
+  color: #9aa2af;
+  text-decoration: line-through;
+}
+
+.task-checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #cfd4de;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #16a34a;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.task-item--completed .task-checkbox {
+  border-color: #86efac;
+  background: #dcfce7;
+}
+
+.task-title {
+  flex: 1;
+  min-width: 0;
+  color: #374151;
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
+}
+
+.task-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.task-item:hover .task-actions,
+.task-item:focus-within .task-actions {
+  opacity: 1;
+}
+
+.task-actions button {
+  border: 0;
+  padding: 6px 8px;
+  border-radius: 7px;
+  background: transparent;
+  color: #7b8494;
+  font-size: 0.73rem;
+  font-weight: 600;
+}
+
+.task-actions button:hover {
+  background: #eef0f4;
+  color: #4f46e5;
+}
+
+.task-actions button:last-child:hover {
+  color: #dc2626;
+}
+
+/* ========================================
+   TASK EDIT
+======================================== */
+
+.task-edit {
+  width: 100%;
+}
+
+.task-edit__actions {
+  margin-top: 6px;
+}
+
+/* ========================================
+   ADD TASK
+======================================== */
+
+.add-task {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.add-task input {
+  flex: 1;
+}
+
+.add-task button {
+  flex-shrink: 0;
+  border: 0;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: #172033;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.add-task button:hover {
+  background: #293348;
+}
+
+/* ========================================
+   ERRORS
+======================================== */
+
+.error-message {
+  margin: 8px 0 0;
+  color: #dc2626;
+  font-size: 0.78rem;
+}
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+
+.empty-state {
+  padding: 48px 24px;
+  border: 1px dashed #d8dde7;
+  border-radius: 18px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.empty-state > span {
+  display: block;
+  margin-bottom: 12px;
+  color: #9aa2af;
+  font-size: 2rem;
+}
+
+.empty-state h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.empty-state p {
+  margin: 8px 0 0;
+  color: #7a8498;
+  font-size: 0.85rem;
+}
+
+/* ========================================
+   ADD PROJECT
+======================================== */
+
+.add-project-card {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+  padding: 28px;
+  border: 1px solid #e4e7ee;
+  border-radius: 18px;
+  background: #172033;
+  color: #ffffff;
+  box-shadow: 0 8px 28px rgba(20, 30, 55, 0.1);
+}
+
+.add-project-card .section-eyebrow {
+  color: #a5b4fc;
+}
+
+.add-project-card h2 {
+  margin-top: 0;
+}
+
+.add-project-card p {
+  margin: 8px 0 0;
+  color: #b5bdcb;
+  font-size: 0.85rem;
+}
+
+.add-project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-project-form > label {
+  color: #c5cad4;
+}
+
+.add-project-input {
+  display: flex;
+  gap: 8px;
+}
+
+.add-project-input input {
+  flex: 1;
+  border-color: #3b4558;
+  background: #232d40;
+  color: #ffffff;
+}
+
+.add-project-input input::placeholder {
+  color: #7f899b;
+}
+
+.add-project-input button {
+  flex-shrink: 0;
+  border: 0;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: #6366f1;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.add-project-input button:hover {
+  background: #818cf8;
+}
+
+.add-project-form small {
+  color: #8f99aa;
+}
+
+.add-project-form small strong {
+  color: #c7d2fe;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .workspace-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .search-box {
+    grid-column: 1 / -1;
+  }
+
+  .add-project-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    width: min(100% - 20px, 1180px);
+    padding: 28px 0 48px;
+  }
+
+  .overview {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .overview-card {
+    padding: 16px;
+  }
+
+  .overview-card strong {
+    font-size: 1.4rem;
+  }
+
+  .workspace-controls {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .search-box {
+    grid-column: auto;
+  }
+
+  .section-header {
+    align-items: flex-start;
+  }
+
+  .project-card {
+    padding: 18px;
+  }
+
+  .project-card__header {
+    gap: 10px;
+  }
+
+  .task-actions {
+    opacity: 1;
+  }
+
+  .add-task {
+    flex-direction: column;
+  }
+
+  .add-task button {
+    min-height: 42px;
+  }
+
+  .add-project-card {
+    padding: 22px;
+  }
+
+  .add-project-input {
+    flex-direction: column;
+  }
+
+  .add-project-input button {
+    min-height: 42px;
+  }
+}

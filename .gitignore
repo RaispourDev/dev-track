@@ -1,0 +1,70 @@
+# === Dependencies ===
+node_modules/
+.pnpm-store/
+
+# === Build outputs ===
+dist/
+build/
+dist-ssr/
+*.tsbuildinfo
+
+# === Logs ===
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# === Environment / secrets ===
+.env
+.env.*
+!.env.example
+
+# === Database ===
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# === Testing ===
+/coverage
+/.nyc_output
+
+# === Prisma generated ===
+src/generated/prisma/
+
+# === IDE / Editors ===
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# === OS ===
+.DS_Store
+Thumbs.db
+*.local
+
+# === AI tools ===
+.agents/
+.claude/
+.windsurf/
+
+# === Temp ===
+.temp/
+.tmp/
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# === Diagnostic ===
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
